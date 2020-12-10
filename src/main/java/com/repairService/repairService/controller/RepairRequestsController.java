@@ -1,5 +1,6 @@
 package com.repairService.repairService.controller;
 
+import com.repairService.repairService.mapper.RepairRequestMapper;
 import com.repairService.repairService.model.RepairRequest;
 import com.repairService.repairService.repository.RepairRequestRepository;
 import org.springframework.http.HttpStatus;
@@ -22,14 +23,23 @@ public class RepairRequestsController {
 
     @PostMapping("/api/v1/repair_request")
     public ResponseEntity<Object> interceptRepairRequest(@RequestParam("repairRequest") String repairRequestJSON) {
-
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        RepairRequest request = repairRequestRepository.setNewRequest(RepairRequestMapper.mapJSON(repairRequestJSON));
+        if (request != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(request);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     @PostMapping("/api/v1/repair_request/status")
     public ResponseEntity<Object> setRepairRequestStatus(@RequestParam("repairRequest") String repairRequestJSON) {
 
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        RepairRequest request = repairRequestRepository.setNewStatus(RepairRequestMapper.mapJSON(repairRequestJSON));
+        if (request != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(request);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     @GetMapping("/api/v1/repair_request")

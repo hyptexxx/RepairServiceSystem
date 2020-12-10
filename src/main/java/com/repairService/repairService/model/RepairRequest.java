@@ -3,6 +3,7 @@ package com.repairService.repairService.model;
 import java.util.Date;
 
 public class RepairRequest {
+    private int id;
     private int userId;
     private String userLogin;
     private String description;
@@ -13,16 +14,17 @@ public class RepairRequest {
     public RepairRequest() {
     }
 
-    public RepairRequest(int user_id, String userLogin, String description, Date date, int statusId, String statusDescription) {
-        this.userId = user_id;
+    public RepairRequest(int userId, String userLogin, String description, Date date, int statusId, String statusDescription, int id) {
+        this.userId = userId;
         this.userLogin = userLogin;
         this.description = description;
         this.date = date;
+        this.id = id;
         this.statusId = statusId;
         this.statusDescription = statusDescription;
     }
 
-    public int getUser_id() {
+    public int getUserId() {
         return userId;
     }
 
@@ -68,5 +70,13 @@ public class RepairRequest {
 
     public void setStatusDescription(String statusDescription) {
         this.statusDescription = statusDescription;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
