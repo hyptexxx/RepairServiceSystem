@@ -4,14 +4,16 @@ public class User {
 
     private String login;
     private String roleDescription;
+    private int id;
 
 
     public User() {
     }
 
-    public User(String login, String roleDescription) {
+    public User(String login, String roleDescription, int id) {
         this.login = login;
         this.roleDescription = roleDescription;
+        this.id = id;
     }
 
 
@@ -32,4 +34,11 @@ public class User {
     }
 
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

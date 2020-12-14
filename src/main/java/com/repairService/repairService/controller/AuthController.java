@@ -51,8 +51,6 @@ public class AuthController {
         } else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }
-
-
     }
 
     @PostMapping("/api/v1/logout")

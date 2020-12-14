@@ -35,8 +35,7 @@ public class RepairRequestRepository {
                     "       u.login as user_login\n" +
                     "from repair_requests rr\n" +
                     "         inner join status s on rr.status_id = s.id\n" +
-                    "         inner join users u on rr.user_id = u.id\n" +
-                    "where status_id = 1", new RepairRequestMapper());
+                    "         inner join users u on rr.user_id = u.id\n", new RepairRequestMapper());
             return repairRequests;
         } catch (EmptyResultDataAccessException e) {
             return new ArrayList<>();

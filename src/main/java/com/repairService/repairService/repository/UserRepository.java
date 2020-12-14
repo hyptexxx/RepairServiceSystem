@@ -17,7 +17,7 @@ public class UserRepository {
     public User findUser(String login, String password) {
         User user;
         try {
-            user = jdbcTemplate.queryForObject("select login, role_name\n" +
+            user = jdbcTemplate.queryForObject("select login, role_name, users.id as id\n" +
                     "from users\n" +
                     "         inner join roles on users.role_id = roles.id\n" +
                     "where login like ?\n" +
